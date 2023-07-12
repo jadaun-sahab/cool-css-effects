@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Document</title>
      <style>
-           body {
+          body {
                height: 100vh;
                width: 100vw;
                background-color: black;
@@ -28,11 +29,11 @@
                object-fit: cover;
                object-position: 100% center;
           }
- 
      </style>
 </head>
+
 <body>
-      <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+     <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
           <img class="image"
                src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
                draggable="false" />
@@ -58,53 +59,54 @@
                src="https://images.unsplash.com/photo-1516681100942-77d8e7f9dd97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
                draggable="false" />
      </div>
-     
+
 </body>
 <script>
      const track = document.getElementById("image-track");
 
-const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
+     const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
 
-const handleOnUp = () => {
-     track.dataset.mouseDownAt = "0";
-     track.dataset.prevPercentage = track.dataset.percentage;
-}
-
-const handleOnMove = e => {
-     if (track.dataset.mouseDownAt === "0") return;
-
-     const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
-          maxDelta = window.innerWidth / 2;
-
-     const percentage = (mouseDelta / maxDelta) * -100,
-          nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
-          nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
-
-     track.dataset.percentage = nextPercentage;
-
-     track.animate({
-          transform: `translate(${nextPercentage}%, -50%)`
-     }, { duration: 1200, fill: "forwards" });
-
-     for (const image of track.getElementsByClassName("image")) {
-          image.animate({
-               objectPosition: `${100 + nextPercentage}% center`
-          }, { duration: 1200, fill: "forwards" });
+     const handleOnUp = () => {
+          track.dataset.mouseDownAt = "0";
+          track.dataset.prevPercentage = track.dataset.percentage;
      }
-}
 
-/* -- Had to add extra lines for touch events -- */
+     const handleOnMove = e => {
+          if (track.dataset.mouseDownAt === "0") return;
 
-window.onmousedown = e => handleOnDown(e);
+          const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+               maxDelta = window.innerWidth / 2;
 
-window.ontouchstart = e => handleOnDown(e.touches[0]);
+          const percentage = (mouseDelta / maxDelta) * -100,
+               nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
+               nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
 
-window.onmouseup = e => handleOnUp(e);
+          track.dataset.percentage = nextPercentage;
 
-window.ontouchend = e => handleOnUp(e.touches[0]);
+          track.animate({
+               transform: `translate(${nextPercentage}%, -50%)`
+          }, { duration: 1200, fill: "forwards" });
 
-window.onmousemove = e => handleOnMove(e);
+          for (const image of track.getElementsByClassName("image")) {
+               image.animate({
+                    objectPosition: `${100 + nextPercentage}% center`
+               }, { duration: 1200, fill: "forwards" });
+          }
+     }
 
-window.ontouchmove = e => handleOnMove(e.touches[0]);
+     /* -- Had to add extra lines for touch events -- */
+
+     window.onmousedown = e => handleOnDown(e);
+
+     window.ontouchstart = e => handleOnDown(e.touches[0]);
+
+     window.onmouseup = e => handleOnUp(e);
+
+     window.ontouchend = e => handleOnUp(e.touches[0]);
+
+     window.onmousemove = e => handleOnMove(e);
+
+     window.ontouchmove = e => handleOnMove(e.touches[0]);
 </script>
+
 </html>
