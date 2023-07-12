@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +27,7 @@
                filter: blur(5px);
                box-shadow: 2px 2px 20px red;
           }
+
           .show {
                opacity: 1;
                transform: translateX(0);
@@ -34,35 +36,44 @@
           }
      </style>
 </head>
+
 <body>
      <h1>hello</h1>
 
      <section class="hidden">
-          <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos repellat, ullam possimus voluptas, vel fugit rerum reiciendis, commodi blanditiis qui hic corrupti illum? Dolorum deserunt perspiciatis, reiciendis voluptatem eaque cupiditate.</h1>
+          <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos repellat, ullam possimus voluptas,
+               vel fugit rerum reiciendis, commodi blanditiis qui hic corrupti illum? Dolorum deserunt perspiciatis,
+               reiciendis voluptatem eaque cupiditate.</h1>
      </section>
 
 
      <section class="hidden">
-          <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos repellat, ullam possimus voluptas, vel fugit rerum reiciendis, commodi blanditiis qui hic corrupti illum? Dolorum deserunt perspiciatis, reiciendis voluptatem eaque cupiditate.</h1>
-     </section>
-
-
-
-     <section class="hidden">
-          <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos repellat, ullam possimus voluptas, vel fugit rerum reiciendis, commodi blanditiis qui hic corrupti illum? Dolorum deserunt perspiciatis, reiciendis voluptatem eaque cupiditate.</h1>
+          <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos repellat, ullam possimus voluptas,
+               vel fugit rerum reiciendis, commodi blanditiis qui hic corrupti illum? Dolorum deserunt perspiciatis,
+               reiciendis voluptatem eaque cupiditate.</h1>
      </section>
 
 
 
      <section class="hidden">
-          <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos repellat, ullam possimus voluptas, vel fugit rerum reiciendis, commodi blanditiis qui hic corrupti illum? Dolorum deserunt perspiciatis, reiciendis voluptatem eaque cupiditate.</h1>
+          <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos repellat, ullam possimus voluptas,
+               vel fugit rerum reiciendis, commodi blanditiis qui hic corrupti illum? Dolorum deserunt perspiciatis,
+               reiciendis voluptatem eaque cupiditate.</h1>
      </section>
-     
+
+
+
+     <section class="hidden">
+          <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos repellat, ullam possimus voluptas,
+               vel fugit rerum reiciendis, commodi blanditiis qui hic corrupti illum? Dolorum deserunt perspiciatis,
+               reiciendis voluptatem eaque cupiditate.</h1>
+     </section>
+
 </body>
 <script>
-      let observer = new IntersectionObserver((entries) => {
+     let observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
-              
+
                if (entry.isIntersecting) {
                     entry.target.classList.add('show');
                }
@@ -75,4 +86,5 @@
      let hiddenElements = document.querySelectorAll('.hidden');
      hiddenElements.forEach((el) => observer.observe(el));
 </script>
+
 </html>
