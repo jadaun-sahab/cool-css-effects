@@ -4,6 +4,35 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Document</title>
+     <style>
+          body {
+               margin: 0;
+               padding: 0;
+               background-color: #131316;
+               color: #ffffff;
+          }
+
+          section {
+               /* display: grid; */
+               /* align-items: center; */
+               /* place-items: center; */
+               min-height: 100vh;
+          }
+
+          .hidden {
+               opacity: 0;
+               transition: all 1s;
+               transform: translateX(-100%);
+               filter: blur(5px);
+               box-shadow: 2px 2px 20px red;
+          }
+          .show {
+               opacity: 1;
+               transform: translateX(0);
+               filter: blur(0);
+               box-shadow: 2px 2px 0px rgba(255, 0, 0, 0);
+          }
+     </style>
 </head>
 <body>
      <h1>hello</h1>
